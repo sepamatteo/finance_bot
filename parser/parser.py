@@ -6,21 +6,15 @@ from bs4 import BeautifulSoup as BS
 import requests
 import re
 
-
-# funzione per scrivere tutta la stringa sulla stessa linea e senza spazi
-def stringOnSameLine(a):
-    a = a.replace(" ", "")
-    a = str.join("", a.splitlines())
-    return a
-
 # funzione che sostituisce la virgola con il punto nel valore estratto per renderlo leggibile dal programma
 def removeComma(a):
+    
     a = a.replace(",", ".")
-    #a = str.join("", a.splitlines())
     return a
 
 # funzione per rimuovere il tag html
 def removeTag(a):
+    
     a = a.replace('<li><span id="ctl00_phContents_ctlInfoTitolo_lblOpen">', '')
     a = a.replace('</span>Apertura</li>', '')
     return a
@@ -70,10 +64,6 @@ def main():
         CONTENT = req_string;
         writeToFile(PATH_TO_FILE, CONTENT)
 
-        # scrittura del file html su singola linea
-        string_with_no_spaces = stringOnSameLine(req_string)
-        writeToFile("./parse_no_spaces.txt", string_with_no_spaces)
-
         # estrazione e scrittura del parametro
         parametro = extractParameter()
         stringa_parametro = str(parametro)
@@ -86,7 +76,6 @@ def main():
         print("Errore : ", status_code)
 
 
-    
 
 if __name__ == '__main__':
     main()
