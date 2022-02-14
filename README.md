@@ -6,3 +6,5 @@ moduli da installare:
 -python-telegram-bot (pip3 install python-telegram-bot)
 
 link: https://www.teleborsa.it/azioni/enel-enel-it0003128367-SVQwMDAzMTI4MzY3
+
+nome bot telegram: @test_ptco_bot
