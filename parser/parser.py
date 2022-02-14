@@ -39,7 +39,7 @@ def extractParameter():
     with open('/home/matteo/MEGAsync/code/Python/http_req/parse.html') as fp:
                 
         r = requests.get('https://www.teleborsa.it/azioni/enel-enel-it0003128367-SVQwMDAzMTI4MzY3')
-        soup = BS(r.content)
+        soup = BS(r.content, 'html5lib')
 
         parametro = soup.find("span", id="ctl00_phContents_ctlInfoTitolo_lblOpen").text
         parametro = removeComma(parametro)
