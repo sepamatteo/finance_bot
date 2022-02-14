@@ -5,7 +5,7 @@ esci = False
 
 f = open("parametro.txt","r+")
 a = f.read()
-firstParameter = int(a)
+firstParameter = float(a)
 f.close()
 
 def switchParam(a,b):
@@ -25,7 +25,7 @@ def sampleResponse(input_txt):
         
         f = open("parametro.txt","r+")
         a = f.read()
-        parametro = int(a)
+        parametro = float(a)
         f.close()
         
         
