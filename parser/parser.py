@@ -13,8 +13,8 @@ def stringOnSameLine(a):
 
 # funzione per rimuovere il tag html
 def removeTag(a):
-    a = a.replace("<p>", "")
-    a = a.replace("</p>", "")
+    a = a.replace("<li><span id="ctl00_phContents_ctlInfoTitolo_lblOpen">", "")
+    a = a.replace("</span>Apertura</li>", "")
     return a
 
 
@@ -31,7 +31,7 @@ def extractParameter():
     with open('parse.html') as fp:
         
         soup = BS(fp, 'html5lib')
-        parametro = soup.find('p')
+        parametro = soup.find('<li><span id="ctl00_phContents_ctlInfoTitolo_lblOpen">')
 
         print ("parametro: ", parametro)
         return parametro
@@ -40,7 +40,7 @@ def extractParameter():
 # main
 def main():
 
-    request = requests.get ('http://www.sepamatteo.com/error')
+    request = requests.get ('https://www.teleborsa.it/azioni/enel-enel-it0003128367-SVQwMDAzMTI4MzY3')
     status_code = request.status_code
 
     print('\n')
