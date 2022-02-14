@@ -3,6 +3,7 @@
 
 from bs4 import BeautifulSoup as BS
 import requests
+import re
 
 
 # funzione per scrivere tutta la stringa sulla stessa linea e senza spazi
@@ -11,10 +12,15 @@ def stringOnSameLine(a):
     a = str.join("", a.splitlines())
     return a
 
+def removeComma(a):
+    a = a.replace(",", ".")
+    #a = str.join("", a.splitlines())
+    return a
+
 # funzione per rimuovere il tag html
 def removeTag(a):
-    a = a.replace("<li><span id="ctl00_phContents_ctlInfoTitolo_lblOpen">", "")
-    a = a.replace("</span>Apertura</li>", "")
+    a = a.replace('<li><span id="ctl00_phContents_ctlInfoTitolo_lblOpen">', '')
+    a = a.replace('</span>Apertura</li>', '')
     return a
 
 
@@ -28,12 +34,21 @@ def writeToFile(path, content):
 # funzione per estrarre un parametro
 def extractParameter():
 
-    with open('parse.html') as fp:
-        
-        soup = BS(fp, 'html5lib')
-        parametro = soup.find('<li><span id="ctl00_phContents_ctlInfoTitolo_lblOpen">')
+    with open('/home/matteo/MEGAsync/code/Python/http_req/parse.html') as fp:
+                
+        #soup = BS(fp, 'html5lib')
+        #parametro = soup('<span id="ctl00_phContents_ctlInfoTitolo_lblOpen">')
 
+        r = requests.get('https://www.teleborsa.it/azioni/enel-enel-it0003128367-SVQwMDAzMTI4MzY3')
+        soup = BS(r.content)
+
+
+        
+        parametro = soup.find("span", id="ctl00_phContents_ctlInfoTitolo_lblOpen").text
+        parametro = removeComma(parametro)
         print ("parametro: ", parametro)
+
+
         return parametro
 
 
@@ -79,4 +94,3 @@ def main():
 
 if __name__ == '__main__':
     main()
-
