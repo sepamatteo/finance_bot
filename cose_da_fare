@@ -1,0 +1,19 @@
+Richiesta:
+• applicazione che raccolga i dati da una sorgente indicata, metta insieme i dati e vengano 				restituite su telegram.
+• passing del dato html
+• invio su telegram
+
+• sorgente --> html
+• applicazione --> legge il dato html e fa il passing
+• telegram --> restituisce i diversi dati su telegram
+
+vannul2003@gmail.com (email collaboratore interno)
+
+
+Lista di cose da fare
+• configurare il bot telegram con comandi "/" e stampare la didascalia col dato 
+• configurare il programma in modo che si possano visualizzare tutti i dati
+• eventuale: con un comando si visualizzano tutti i dati insieme
+• configurazione della parte grafica
+• eventuale: aggiornamento costante dei valori se cambiano con eventuale decisione di tempo di aggiornamento
+• fare in modo che il programma sia sempre attivo e che il bot funzioni in ogni momento
