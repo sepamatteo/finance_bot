@@ -1,31 +1,111 @@
 import requests
+import os
+import json
+from time import time
 
-def writeFile(path, content):
-
+def writeToFile(path, content):
+    
     file = open(path, 'w')
-    content = str(content)
     file.write(content)
-    file.close
+    file.close()
+
+def getSysTime():
+    
+    milliseconds = int(time() * 1000)
+    print("Orario di sistema in millisecondi", milliseconds)
+    return milliseconds
+
+def removeJson(a):
+    
+    replaceString1 = '{"quoteResponse":{"result":'
+    replaceString2 = ',"error":null}}'
+    a = a.replace(replaceString1, "")
+    a = a.replace(replaceString2, "")
+    return a
+
+def menu():
+    
+    print("---------------------------------------\n")
+    print("1. TSLA\n")
+    print("2. AAPL \n")
+    print("3. AMZN \n")
+    print("4. S&P 500 \n")
+    print("5. META \n")
+    print("---------------------------------------\n")
 
 def main():
     
-    path = '/home/matteo/MEGAsync/code/Python/YHAPI/tesla.json'
+    choice = 0
+    menu()
+    choice = input()
+    choice = int(choice)
 
-    url = "https://yh-finance.p.rapidapi.com/auto-complete"
+    if choice == 1:
+        titolo = "TSLA"
+        path = "Json/TSLA.json"
+    
+    if choice == 2:
+        titolo = "AAPL"
+        path = "Json/AAPL.json"
 
-    querystring = {"q":"tesla","region":"US"}
+    if choice == 3:
+        titolo = "AMZN"
+        path = "Json/AMZN.json"
+
+    if choice == 4:
+        titolo = "SPY"
+        path = "Json/SPY.json"
+
+    if choice == 5:
+        titolo = "FB"
+        path = "Json/META.json"
+
+    
+        
+
+    url = "https://yh-finance.p.rapidapi.com/market/v2/get-quotes"
+
+    querystring = {"region":"US","symbols":titolo}
 
     headers = {
         'x-rapidapi-host': "yh-finance.p.rapidapi.com",
         'x-rapidapi-key': "2f564ef340msh63781686c607c0fp1a8e2djsn348e1330ba97"
         }
 
-    response = requests.request("GET", url, headers = headers, params = querystring)
-    content = response.text
+    response = requests.request("GET", url, headers=headers, params=querystring)
 
-    print(response.text)
+    status_code = response.status_code
 
-    writeFile(path, content)
+    if status_code == 200:
 
+        correctJson = removeJson(response.text)
+
+        #if choice == 1:
+        writeToFile(path, correctJson)
+
+        with open(path, "r") as json_file:
+            data = json.load(json_file)
+
+        print("\n")
+        timestamp = getSysTime()
+        
+        print("---------------------------------------\n")
+        
+        actualValue = data[0]['regularMarketPrice']
+        print("Valore attuale: ", actualValue)
+        
+        openValue = data[0]['regularMarketOpen']
+        print("Valore di apertura: ", openValue)
+        
+        previousClose = data[0]['regularMarketPreviousClose']
+        print("Valore precedente di chiusura: ", previousClose)
+
+        todayRange = data[0]['regularMarketDayRange']
+        print("Range odierno: ", todayRange, "\n")
+
+        print("---------------------------------------\n")
+        
+
+    
 if __name__ == "__main__":
     main()
