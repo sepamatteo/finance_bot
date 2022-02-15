@@ -5,5 +5,5 @@ Lo script funziona ora con le API di yahoo finance, lascia scegliere all'utente 
 1. TSLA (Azioni Tesla)
 2. AAPL (Azioni Apple)
 3. AMZN (Azioni Amazon)
-4. S&P 500 (Indice azionario delle 500 aziende statumitensi a maggior capitalizzazione)
+4. S&P 500 (Indice azionario delle 500 aziende statunitensi a maggior capitalizzazione)
 5. META (Azioni del gruppo Facebook)
