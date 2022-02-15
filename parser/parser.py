@@ -13,6 +13,16 @@ def removeComma(a):
     return a
 
 
+
+def menu():
+    
+    print("1. TSLA\n")
+    print("2. ENEL \n")
+    print("3. AMZN \n")
+    print("4. LDO \n")
+    print("5. AAPL \n")
+
+
 # funzione per scrivere su file
 def writeToFile(path, opening, today, perc):
         
@@ -85,7 +95,34 @@ def main():
         req_string = request.text
         print(req_string)
 
-        link = 'https://www.teleborsa.it/azioni-estero/tesla-tsla-us88160r1014-MjQuVFNMQQ'
+        link = ''
+        path = ''
+        choice = 0
+
+        menu()
+        choice = input()
+        choice = int(choice)
+        
+        if choice == 1:
+            link = 'https://www.teleborsa.it/azioni-estero/tesla-tsla-us88160r1014-MjQuVFNMQQ'
+            path = '/home/matteo/MEGAsync/code/Python/Telegram_BOT/TSLA.txt'
+        
+        if choice == 2:
+            link = 'https://www.teleborsa.it/azioni/enel-enel-it0003128367-SVQwMDAzMTI4MzY3'
+            path = '/home/matteo/MEGAsync/code/Python/Telegram_BOT/ENEL.txt'
+        
+        if choice == 3:
+            link = 'https://www.teleborsa.it/azioni/amazon-amzn-us0231351067-VVMwMjMxMzUxMDY3'
+            path = '/home/matteo/MEGAsync/code/Python/Telegram_BOT/AMAZON.txt'
+
+        if choice == 4:
+            link = 'https://www.teleborsa.it/azioni/leonardo-ldo-it0003856405-SVQwMDAzODU2NDA1'
+            path = '/home/matteo/MEGAsync/code/Python/Telegram_BOT/LDO.txt'
+
+        if choice == 5:
+            link = 'https://www.teleborsa.it/azioni-estero/apple-aapl-us0378331005-MjQuQUFQTA'
+            path = '/home/matteo/MEGAsync/code/Python/Telegram_BOT/AAPL.txt'
+
         
         
         
@@ -103,7 +140,7 @@ def main():
         stringaPerc = str(perc)
         perc = removeComma(perc)
 
-        writeToFile("/home/matteo/MEGAsync/code/Python/Telegram_BOT/TSLA.txt", valore_apertura, valore_ora, perc)        
+        writeToFile(path, valore_apertura, valore_ora, perc)        
         
     else:
         
