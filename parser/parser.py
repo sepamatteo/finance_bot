@@ -36,46 +36,41 @@ def writeToFile(path, opening, today, perc):
 
 # funzione per estrarre un parametro
 def extractParameterOpeningValue(link):
-
-    with open('/home/matteo/MEGAsync/code/Python/http_req/parse.html') as fp:
                 
-        r = requests.get(link)
-        soup = BS(r.content, 'html5lib')
+    r = requests.get(link)
+    soup = BS(r.content, 'html5lib')
 
-        valore_apertura = soup.find("span", id="ctl00_phContents_ctlInfoTitolo_lblOpen").text
-        valore_apertura = removeComma(valore_apertura)
-        print ("valore di apertura: ", valore_apertura)
+    valore_apertura = soup.find("span", id="ctl00_phContents_ctlInfoTitolo_lblOpen").text
+    valore_apertura = removeComma(valore_apertura)
+    print ("valore di apertura: ", valore_apertura)
 
 
-        return valore_apertura
+    return valore_apertura
 
 def extractParameterNowValue(link):
-
-    with open('/home/matteo/MEGAsync/code/Python/http_req/parse.html') as fp:
                 
-        r = requests.get(link)
-        soup = BS(r.content, 'html5lib')
+    r = requests.get(link)
+    soup = BS(r.content, 'html5lib')
 
-        valore_ora = soup.find("span", id="ctl00_phContents_ctlHeader_lblPrice").text
-        valore_ora = removeComma(valore_ora)
-        print ("valore di oggi: ", valore_ora)
+    valore_ora = soup.find("span", id="ctl00_phContents_ctlHeader_lblPrice").text
+    valore_ora = removeComma(valore_ora)
+    print ("valore di oggi: ", valore_ora)
 
 
-        return valore_ora
+    return valore_ora
 
 
 def extractParameterPerc(link):
-    with open('/home/matteo/MEGAsync/code/Python/http_req/parse.html') as fp:
                 
-        r = requests.get(link)
-        soup = BS(r.content, 'html5lib')
+    r = requests.get(link)
+    soup = BS(r.content, 'html5lib')
 
-        perc = soup.find("span", id="ctl00_phContents_ctlHeader_lblPercentChange").text
-        perc = removeComma(perc)
-        print ("percentuale: ", perc)
+    perc = soup.find("span", id="ctl00_phContents_ctlHeader_lblPercentChange").text
+    perc = removeComma(perc)
+    print ("percentuale: ", perc)
 
 
-        return perc
+    return perc
 
 
 
@@ -105,23 +100,23 @@ def main():
         
         if choice == 1:
             link = 'https://www.teleborsa.it/azioni-estero/tesla-tsla-us88160r1014-MjQuVFNMQQ'
-            path = '/home/matteo/MEGAsync/code/Python/Telegram_BOT/TSLA.txt'
+            path = 'Telegram_BOT/TSLA.txt'
         
         if choice == 2:
             link = 'https://www.teleborsa.it/azioni/enel-enel-it0003128367-SVQwMDAzMTI4MzY3'
-            path = '/home/matteo/MEGAsync/code/Python/Telegram_BOT/ENEL.txt'
+            path = 'Telegram_BOT/ENEL.txt'
         
         if choice == 3:
             link = 'https://www.teleborsa.it/azioni/amazon-amzn-us0231351067-VVMwMjMxMzUxMDY3'
-            path = '/home/matteo/MEGAsync/code/Python/Telegram_BOT/AMAZON.txt'
+            path = 'Telegram_BOT/AMZN.txt'
 
         if choice == 4:
             link = 'https://www.teleborsa.it/azioni/leonardo-ldo-it0003856405-SVQwMDAzODU2NDA1'
-            path = '/home/matteo/MEGAsync/code/Python/Telegram_BOT/LDO.txt'
+            path = 'Telegram_BOT/LDO.txt'
 
         if choice == 5:
             link = 'https://www.teleborsa.it/azioni-estero/apple-aapl-us0378331005-MjQuQUFQTA'
-            path = '/home/matteo/MEGAsync/code/Python/Telegram_BOT/AAPL.txt'
+            path = 'Telegram_BOT/AAPL.txt'
 
         
         
