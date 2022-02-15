@@ -6,4 +6,4 @@ Lo script funziona ora con le API di yahoo finance, lascia scegliere all'utente 
 2. AAPL (Azioni Apple)
 3. AMZN (Azioni Amazon)
 4. S&P 500 (Indice azionario delle 500 aziende statumitensi a maggior capitalizzazione)
-5. META (Azioni del gruppo Facebook))
+5. META (Azioni del gruppo Facebook)
