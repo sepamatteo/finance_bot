@@ -7,18 +7,21 @@ import os
 import json
 from time import time
 
+# funzione per scrivere su file
 def writeToFile(path, content):
     
     file = open(path, 'w')
     file.write(content)
     file.close()
 
+# funzione che restituisce l'orario di sistema in millisecondi
 def getSysTime():
     
     milliseconds = int(time() * 1000)
     print("Orario di sistema in millisecondi", milliseconds)
     return milliseconds
 
+# funzione che rimuove la parte iniziale e finale del file json resituito in output dal API che causavano problemi nel parsing
 def removeJson(a):
     
     replaceString1 = '{"quoteResponse":{"result":'
@@ -27,6 +30,7 @@ def removeJson(a):
     a = a.replace(replaceString2, "")
     return a
 
+# funzione che stampa a schermo le scelte disponibili all'utente
 def menu():
     
     print("---------------------------------------\n")
@@ -67,6 +71,7 @@ def main():
     
         
 
+    # comunicazione tramite l'API
     url = "https://yh-finance.p.rapidapi.com/market/v2/get-quotes"
 
     querystring = {"region":"US","symbols":titolo}
@@ -80,6 +85,7 @@ def main():
 
     status_code = response.status_code
 
+    # se non ci sono errori nella richiesta http
     if status_code == 200:
 
         correctJson = removeJson(response.text)
