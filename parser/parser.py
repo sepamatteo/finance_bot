@@ -12,41 +12,67 @@ def removeComma(a):
     a = a.replace(",", ".")
     return a
 
-# funzione per rimuovere il tag html
-def removeTag(a):
-    
-    a = a.replace('<li><span id="ctl00_phContents_ctlInfoTitolo_lblOpen">', '')
-    a = a.replace('</span>Apertura</li>', '')
-    return a
-
 
 # funzione per scrivere su file
-def writeToFile(path, content):
+def writeToFile(path, opening, today, perc):
         
     file = open(path, 'w')
-    file.write(content)
+    file.write(opening)
+    file.write("\n")
+    file.write(today)
+    file.write("\n")
+    file.write(perc)
     file.close()
 
 # funzione per estrarre un parametro
-def extractParameter():
+def extractParameterOpeningValue(link):
 
     with open('/home/matteo/MEGAsync/code/Python/http_req/parse.html') as fp:
                 
-        r = requests.get('https://www.teleborsa.it/azioni/enel-enel-it0003128367-SVQwMDAzMTI4MzY3')
+        r = requests.get(link)
         soup = BS(r.content, 'html5lib')
 
-        parametro = soup.find("span", id="ctl00_phContents_ctlInfoTitolo_lblOpen").text
-        parametro = removeComma(parametro)
-        print ("parametro: ", parametro)
+        valore_apertura = soup.find("span", id="ctl00_phContents_ctlInfoTitolo_lblOpen").text
+        valore_apertura = removeComma(valore_apertura)
+        print ("valore di apertura: ", valore_apertura)
 
 
-        return parametro
+        return valore_apertura
+
+def extractParameterNowValue(link):
+
+    with open('/home/matteo/MEGAsync/code/Python/http_req/parse.html') as fp:
+                
+        r = requests.get(link)
+        soup = BS(r.content, 'html5lib')
+
+        valore_ora = soup.find("span", id="ctl00_phContents_ctlHeader_lblPrice").text
+        valore_ora = removeComma(valore_ora)
+        print ("valore di oggi: ", valore_ora)
+
+
+        return valore_ora
+
+
+def extractParameterPerc(link):
+    with open('/home/matteo/MEGAsync/code/Python/http_req/parse.html') as fp:
+                
+        r = requests.get(link)
+        soup = BS(r.content, 'html5lib')
+
+        perc = soup.find("span", id="ctl00_phContents_ctlHeader_lblPercentChange").text
+        perc = removeComma(perc)
+        print ("percentuale: ", perc)
+
+
+        return perc
+
 
 
 # main
 def main():
 
-    request = requests.get ('https://www.teleborsa.it/azioni/enel-enel-it0003128367-SVQwMDAzMTI4MzY3')
+    request = requests.get ('https://www.teleborsa.it/azioni-estero/tesla-tsla-us88160r1014-MjQuVFNMQQ')
     status_code = request.status_code
 
     print('\n')
@@ -59,17 +85,25 @@ def main():
         req_string = request.text
         print(req_string)
 
-        # scrittura della pagina html sul file
-        PATH_TO_FILE = './parse.html'
-        CONTENT = req_string;
-        writeToFile(PATH_TO_FILE, CONTENT)
-
+        link = 'https://www.teleborsa.it/azioni-estero/tesla-tsla-us88160r1014-MjQuVFNMQQ'
+        
+        
+        
         # estrazione e scrittura del parametro
-        parametro = extractParameter()
-        stringa_parametro = str(parametro)
-        parametro_estratto = removeTag(stringa_parametro)
-        writeToFile("/home/matteo/MEGAsync/code/Python/Telegram_BOT/parametro.txt", parametro_estratto)
-    
+        valore_apertura = extractParameterOpeningValue(link)
+        valore_ora = extractParameterNowValue(link)
+        perc = extractParameterPerc(link)
+        
+        stringaApertura = str(valore_apertura)
+        valore_apertura = removeComma(valore_apertura)
+
+        stringaOggi = str(valore_ora)
+        valore_ora = removeComma(valore_ora)
+
+        stringaPerc = str(perc)
+        perc = removeComma(perc)
+
+        writeToFile("/home/matteo/MEGAsync/code/Python/Telegram_BOT/TSLA.txt", valore_apertura, valore_ora, perc)        
         
     else:
         
