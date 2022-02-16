@@ -18,7 +18,7 @@ def writeToFile(path, content):
     file.close()
 
 # funzione che restituisce l'orario di sistema in millisecondi
-def getSysTime():
+def getTimeStamp():
     
     milliseconds = int(time() * 1000)
     print("Orario di sistema in millisecondi", milliseconds)
@@ -33,17 +33,27 @@ def removeJson(a):
     a = a.replace(replaceString2, "")
     return a
 
+# funzione che restituisce l'orario di sistema come un intero
+def getSystemTime(a):
+    a = datetime.datetime.now()
+    a = int(a.strftime("%H%M%S"))
+    return a
+
+
 
 def main():
     
     esci = False
-
-    system_time = datetime.datetime.now()
-    system_time = int(system_time.strftime("%H%M%S"))
-    #print (system_time)
+    
+    system_time = 0
+    
     
     while esci != True:
 
+        system_time = getSystemTime(system_time)
+        #print (system_time)
+        
+        # se l'orario di sistema è compreso tra le 15:30 e le 22:00 (apertura-chiusura borsa americana)
         if system_time >= 153000 and system_time <= 220000:
             
             i = 0
@@ -120,7 +130,7 @@ def main():
                             print("\n")
                             
                             # calcolo e scrittura del timestamp
-                            timestamp = getSysTime()
+                            timestamp = getTimeStamp()
                             timestamp = str(timestamp)
                             file.write(timestamp)
                             file.write(";")
