@@ -6,8 +6,10 @@ import requests
 import os
 import json
 from time import time
+import time as t
+from os.path import exists
 
-# funzione per scrivere su file
+# funzione che scrive su file
 def writeToFile(path, content):
     
     file = open(path, 'w')
@@ -30,92 +32,144 @@ def removeJson(a):
     a = a.replace(replaceString2, "")
     return a
 
-# funzione che stampa a schermo le scelte disponibili all'utente
-def menu():
-    
-    print("---------------------------------------\n")
-    print("1. TSLA\n")
-    print("2. AAPL \n")
-    print("3. AMZN \n")
-    print("4. S&P 500 \n")
-    print("5. META \n")
-    print("---------------------------------------\n")
 
 def main():
     
-    choice = 0
-    menu()
-    choice = input()
-    choice = int(choice)
-
-    if choice == 1:
-        titolo = "TSLA"
-        path = "Json/TSLA.json"
+    esci = False
     
-    if choice == 2:
-        titolo = "AAPL"
-        path = "Json/AAPL.json"
+    while esci != True:
+        i = 0
+        titolo = ["TSLA", "AAPL", "AMZN", "SPY", "FB"]
+        name = ["TSLA", "AAPL", "AMZN", "SPY", "FB"]
+        
+        
+        url = "https://yh-finance.p.rapidapi.com/market/v2/get-quotes"
 
-    if choice == 3:
-        titolo = "AMZN"
-        path = "Json/AMZN.json"
+        
 
-    if choice == 4:
-        titolo = "SPY"
-        path = "Json/SPY.json"
+        headers = {
+            'x-rapidapi-host': "yh-finance.p.rapidapi.com",
+            'x-rapidapi-key': "2f564ef340msh63781686c607c0fp1a8e2djsn348e1330ba97"
+            }
 
-    if choice == 5:
-        titolo = "FB"
-        path = "Json/META.json"
+        
+        while i < 5:
+            
+            if i == 0:
+                path = "Json/TSLA.json"
+        
+            if i == 1:
+                path = "Json/AAPL.json"
+
+            if i == 2:
+                path = "Json/AMZN.json"
+
+            if i == 3:
+                path = "Json/SPY.json"
+
+            if i == 4:
+                path = "Json/META.json"
+            
+            # utilizzo del API
+            querystring = {"region":"US","symbols":titolo[i]}
+            response = requests.request("GET", url, headers=headers, params=querystring)
+            status_code = response.status_code
+            if status_code == 200:
+
+                correctJson = removeJson(response.text)
+                writeToFile(path, correctJson)
+
+                with open(path, "r") as json_file:
+                    
+                    #creazione delle stringhe per i file
+                    rm = "rm"
+                    touch = "touch"
+                    space = " "
+                    fileName = name[i]
+                    lockExtension = ".lock"
+                    csvExtension = ".csv"
+                    touchFile = touch + space + fileName + lockExtension
+                    rmFile = rm + space + fileName + lockExtension
+                    csvFileName = fileName + csvExtension
+                    csvFolderPath = "csv"
+                    csvPath = csvFolderPath + "/" + csvFileName
+                    writeLockFile = "write"+fileName+lockExtension
+
+
+                    # controllo dell'esistenza del file .lock
+                    file_exists = exists(writeLockFile)
+                    
+                    # se il file .lock non esiste
+                    if file_exists == False:
+                        
+                        print("Scrittura in corso....")
+                        # creazione del file di lock per la lettura
+                        os.system(touchFile)
+                        data = json.load(json_file)
+
+                        file = open (csvPath, 'a')
+                        print("\n")
+                        
+                        # calcolo e scrittura del timestamp
+                        timestamp = getSysTime()
+                        timestamp = str(timestamp)
+                        file.write(timestamp)
+                        file.write(";")
+                        
+                        print("---------------------------------------\n")
+                    
+                        # scrittura del prezzo di mercato
+                        actualValue = data[0]['regularMarketPrice']
+                        print("Valore attuale: ", actualValue)
+                        actualValue = str(actualValue)
+                        file.write(actualValue)
+                        file.write(";")
+
+                        # scrittura della percentuale
+                        perc = data[0]['regularMarketChangePercent']
+                        print("Percentuale dal apertura: ", perc, "%")
+                        perc = str(perc)
+                        file.write(perc)
+                        file.write(";")
+                                
+                        # scrittura del valore di apertura
+                        openValue = data[0]['regularMarketOpen']
+                        print("Valore di apertura: ", openValue)
+                        openValue = str(openValue)
+                        file.write(openValue)
+                        file.write(";")
+                                
+                        # scrittura della chiusura precedente
+                        previousClose = data[0]['regularMarketPreviousClose']
+                        print("Valore precedente di chiusura: ", previousClose)
+                        previousClose = str(previousClose)
+                        file.write(previousClose)
+                        file.write(";")
+
+                        # scrittura del range odierno
+                        todayRange = data[0]['regularMarketDayRange']
+                        print("Range odierno: ", todayRange, "\n")
+                        todayRange = str(todayRange)
+                        file.write(todayRange)
+                        file.write(";")
+                        file.write("\n")
+                        
+                        # chiusura del flusso
+                        file.close()
+
+                        print("---------------------------------------\n")
+                
+                        # rimozione del file di lock per la lettura
+                        os.system(rmFile)
+                        i = i + 1
+                    else:
+                        print("File lock presente!")
+                
+        t.sleep(5)    
 
     
+
+            
         
-
-    # comunicazione tramite l'API
-    url = "https://yh-finance.p.rapidapi.com/market/v2/get-quotes"
-
-    querystring = {"region":"US","symbols":titolo}
-
-    headers = {
-        'x-rapidapi-host': "yh-finance.p.rapidapi.com",
-        'x-rapidapi-key': "2f564ef340msh63781686c607c0fp1a8e2djsn348e1330ba97"
-        }
-
-    response = requests.request("GET", url, headers=headers, params=querystring)
-
-    status_code = response.status_code
-
-    # se non ci sono errori nella richiesta http
-    if status_code == 200:
-
-        correctJson = removeJson(response.text)
-
-        #if choice == 1:
-        writeToFile(path, correctJson)
-
-        with open(path, "r") as json_file:
-            data = json.load(json_file)
-
-        print("\n")
-        timestamp = getSysTime()
-        
-        print("---------------------------------------\n")
-        
-        actualValue = data[0]['regularMarketPrice']
-        print("Valore attuale: ", actualValue)
-        
-        openValue = data[0]['regularMarketOpen']
-        print("Valore di apertura: ", openValue)
-        
-        previousClose = data[0]['regularMarketPreviousClose']
-        print("Valore precedente di chiusura: ", previousClose)
-
-        todayRange = data[0]['regularMarketDayRange']
-        print("Range odierno: ", todayRange, "\n")
-
-        print("---------------------------------------\n")
-        
-
-    
 if __name__ == "__main__":
     main()
