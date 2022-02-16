@@ -1,5 +1,7 @@
 Lo script funziona ora con le API di yahoo finance, controlla se la borsa americana è aperta ed esegue il parsing dei dati ogni 10 minuti. 
 
+
+
 +------------TITOLI IN LISTA-------------+
 
 1. TSLA (Azioni Tesla)
