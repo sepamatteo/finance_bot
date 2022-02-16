@@ -9,8 +9,7 @@ Linguaggi utilizzati:
 2. Java
 
 Moduli da installare(python):
-1. Requests
-2. json
+1. Requests (pip3 install requests)
 
 API utilizzate:
 1. YH Finance (https://rapidapi.com/apidojo/api/yh-finance/)
