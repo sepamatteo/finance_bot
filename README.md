@@ -1,5 +1,9 @@
 # pcto_4j
 
+Progetto di PCTO  sviulppato dalla classe 4J
+
+
+
 Linguaggi utilizzati: 
 1. Python3
 2. Java
@@ -11,8 +15,9 @@ Moduli da installare(python):
 API utilizzate:
 1. YH Finance (https://rapidapi.com/apidojo/api/yh-finance/)
 
+Fonte dati: 
+1. Yahoo Finance (https://finance.yahoo.com/)
 
-\n
 
 +----------DESCRIZIONE----------+
 
