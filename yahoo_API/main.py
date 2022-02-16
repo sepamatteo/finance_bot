@@ -107,6 +107,7 @@ def main():
                         os.system(touchFile)
                         data = json.load(json_file)
 
+                        time.sleep(1)
                         file = open (csvPath, 'a')
                         print("\n")
                         
