@@ -1,15 +1,23 @@
 # pcto_4j
 
-moduli da installare:
+Linguaggi utilizzati: 
+1. Python3
+2. Java
 
--beautifulsoup4 (pip3 install beautifulsoup4)
+Moduli da installare(python):
+1. Requests
+2. json
 
--requests (pip3 install requests)
+API utilizzate:
+1. YH Finance (https://rapidapi.com/apidojo/api/yh-finance/)
 
--python-telegram-bot (pip3 install python-telegram-bot)
 
--html5lib (pip3 install html5lib)
 
-link: https://www.teleborsa.it/azioni/enel-enel-it0003128367-SVQwMDAzMTI4MzY3
 
-nome bot telegram: @test_ptco_bot
++----------DESCRIZIONE----------+
+
+Il programma di backend scritto in python esegue il parsing del file ".json" di un titolo e intabella i dati in un file ".csv".
+Un programma in java legge i dati dal file ".csv" e li invia al bot.
+Il Bot in base alla selezione dell'utente restituisce i dati desiderati.
+
++-------------------------------+
