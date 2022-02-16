@@ -12,7 +12,7 @@ API utilizzate:
 1. YH Finance (https://rapidapi.com/apidojo/api/yh-finance/)
 
 
-
+\n
 
 +----------DESCRIZIONE----------+
 
