@@ -41,7 +41,6 @@ class Reader_Csv{
             catch(NumberFormatException nfe){
                 System.out.println("Conversione non riuscita!");
             }
-            data=System.currentTimeMillis();
             SimpleDateFormat df = new SimpleDateFormat("dd/MM/yyyy - HH:mm:ss");
             Date result = new Date(data);
             System.out.println("Data: "+result);
@@ -94,7 +93,6 @@ class Reader_Csv{
             catch(NumberFormatException nfe){
                 System.out.println("Conversione non riuscita!");
             }
-            data=System.currentTimeMillis();
             SimpleDateFormat df = new SimpleDateFormat("dd/MM/yyyy - HH:mm:ss");
             Date result = new Date(data);
             System.out.println("Data: "+result);
@@ -146,7 +144,6 @@ class Reader_Csv{
             catch(NumberFormatException nfe){
                 System.out.println("Conversione non riuscita!");
             }
-            data=System.currentTimeMillis();
             SimpleDateFormat df = new SimpleDateFormat("dd/MM/yyyy - HH:mm:ss");
             Date result = new Date(data);
             System.out.println("Data: "+result);
@@ -196,7 +193,6 @@ class Reader_Csv{
             catch(NumberFormatException nfe){
                 System.out.println("Conversione non riuscita!");
             }
-            data=System.currentTimeMillis();
             SimpleDateFormat df = new SimpleDateFormat("dd/MM/yyyy - HH:mm:ss");
             Date result = new Date(data);
             System.out.println("Data: "+result);
@@ -245,7 +241,6 @@ class Reader_Csv{
             catch(NumberFormatException nfe){
                 System.out.println("Conversione non riuscita!");
             }
-            data=System.currentTimeMillis();
             SimpleDateFormat df = new SimpleDateFormat("dd/MM/yyyy - HH:mm:ss");
             Date result = new Date(data);
             System.out.println("Data: "+result);
