@@ -39,6 +39,48 @@ def getSystemTime(a):
     a = int(a.strftime("%H%M%S"))
     return a
 
+def checkFile(a, b):
+    
+    a = exists(b)
+    
+    if a == False:
+                                    
+        file = open (b, 'a')
+        file.write("timestamp")
+        file.write(";")
+        file.write("Valore Attuale")
+        file.write(";")
+        file.write("Percentuale")
+        file.write(";")
+        file.write("Apertura")
+        file.write(";")
+        file.write("Ultima Chiusura")
+        file.write(";")
+        file.write("Range")
+        file.write(";")
+        file.write("\n")
+        file.close()
+                            
+    else:
+        print ("file esistente")
+
+
+def checkFolder(a, b, path1, path2):
+
+    path1 = 'csv'
+    path2 = 'json'
+
+    a = exists(path1)
+    b = exists(path2)
+
+    if a == False:
+        os.mkdir(path1)
+    
+    if b == False:
+        os.mkdir(path2)
+
+
+
 
 
 def main():
@@ -46,15 +88,22 @@ def main():
     esci = False
     
     system_time = 0
+
+    csvExists = False
+    folder1Exists = False
+    folder2Exists = False
+
+    j = 0
     
     
     while esci != True:
 
         system_time = getSystemTime(system_time)
         #print (system_time)
+        checkFolder(folder1Exists, folder2Exists, 'json', 'csv')
         
         # se l'orario di sistema è compreso tra le 15:30 e le 22:00 (apertura-chiusura borsa americana)
-        if system_time >= 153000 and system_time <= 220000:
+        if system_time >= 000000 and system_time <= 220000:
             
             i = 0
             titolo = ["TSLA", "AAPL", "AMZN", "SPY", "FB"]
@@ -74,19 +123,19 @@ def main():
             while i < 5:
                 
                 if i == 0:
-                    path = "Json/TSLA.json"
+                    path = "json/TSLA.json"
             
                 if i == 1:
-                    path = "Json/AAPL.json"
+                    path = "json/AAPL.json"
 
                 if i == 2:
-                    path = "Json/AMZN.json"
+                    path = "json/AMZN.json"
 
                 if i == 3:
-                    path = "Json/SPY.json"
+                    path = "json/SPY.json"
 
                 if i == 4:
-                    path = "Json/META.json"
+                    path = "json/META.json"
                 
                 # utilizzo del API
                 querystring = {"region":"US","symbols":titolo[i]}
@@ -116,6 +165,11 @@ def main():
 
                         # controllo dell'esistenza del file .lock
                         file_exists = exists(writeLockFile)
+                        csvExists = checkFile(csvExists, csvPath)
+                        
+
+
+                        
                         
                         # se il file .lock non esiste
                         if file_exists == False:
@@ -126,9 +180,13 @@ def main():
                             data = json.load(json_file)
 
                             t.sleep(1)
+                            
+
                             file = open (csvPath, 'a')
                             print("\n")
                             
+                            
+
                             # calcolo e scrittura del timestamp
                             timestamp = getTimeStamp()
                             timestamp = str(timestamp)
