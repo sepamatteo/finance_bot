@@ -183,6 +183,7 @@ def main():
                             i = i + 1
                         else:
                             print("File lock presente!")
+                            i = i + 1
                     
             t.sleep(600) 
 
