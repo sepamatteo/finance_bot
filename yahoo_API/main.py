@@ -39,6 +39,7 @@ def getSystemTime(a):
     a = int(a.strftime("%H%M%S"))
     return a
 
+# funzione che controlla l'esistenza del file csv, in caso di non esistenza intesta la prima riga con i titoli
 def checkFile(a, b):
     
     a = exists(b)
@@ -60,11 +61,10 @@ def checkFile(a, b):
         file.write(";")
         file.write("\n")
         file.close()
-                            
-    else:
-        print ("file esistente")
 
 
+
+# funzione che controlla l'esistenza delle cartelle necessarie al funzionamento del programma
 def checkFolder(a, b, path1, path2):
 
     path1 = 'csv'
@@ -148,35 +148,29 @@ def main():
 
                     with open(path, "r") as json_file:
                         
-                        #creazione delle stringhe per i file
-                        rm = "rm"
-                        touch = "touch"
-                        space = " "
                         fileName = name[i]
                         lockExtension = ".lock"
                         csvExtension = ".csv"
-                        touchFile = touch + space + fileName + lockExtension
-                        rmFile = rm + space + fileName + lockExtension
+                        lockFile = fileName + lockExtension
                         csvFileName = fileName + csvExtension
                         csvFolderPath = "csv"
                         csvPath = csvFolderPath + "/" + csvFileName
                         writeLockFile = "write"+fileName+lockExtension
-
 
                         # controllo dell'esistenza del file .lock
                         file_exists = exists(writeLockFile)
                         csvExists = checkFile(csvExists, csvPath)
                         
 
-
-                        
                         
                         # se il file .lock non esiste
                         if file_exists == False:
                             
                             print("Scrittura in corso....")
                             # creazione del file di lock per la lettura
-                            os.system(touchFile)
+                            with open(lockFile, "xt") as f:
+                                f.close()
+                            
                             data = json.load(json_file)
 
                             t.sleep(1)
@@ -237,7 +231,7 @@ def main():
                             print("---------------------------------------\n")
                     
                             # rimozione del file di lock per la lettura
-                            os.system(rmFile)
+                            os.remove(lockFile)
                             i = i + 1
                         else:
                             print("File lock presente!")
