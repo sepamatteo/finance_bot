@@ -1,1 +1,1 @@
-python3 main.py & java -jar TelegramBot.jar
+python3 main.py & java -jar TelegramBot.jar && fg
