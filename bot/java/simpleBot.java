@@ -1,3 +1,5 @@
+//Autore: Alberto Iovino
+
 import org.telegram.telegrambots.bots.TelegramLongPollingBot;
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
 import org.telegram.telegrambots.meta.api.methods.send.SendPhoto;
@@ -26,7 +28,16 @@ public class simpleBot extends TelegramLongPollingBot {
         // System.out.println(update.getMessage().getFrom().getFirstName());
 
         String command = update.getMessage().getText();
-
+        SimpleDateFormat formatter = new SimpleDateFormat("HHmmss");
+        Date datecontroll = new Date();
+        String orario = formatter.format(datecontroll).toString();
+        long orarioc=0;
+        try{
+            orarioc=Long.parseLong(orario);
+        }
+        catch(NumberFormatException nfe){
+            System.out.println("Conversione non riuscita!");
+        }
         //String folder;
         //folder = System.getProperty("user.dir") + "/finance_bot/";
 
@@ -66,7 +77,7 @@ public class simpleBot extends TelegramLongPollingBot {
         }
 
         //comando per vedere i titoli tesla
-        if (command.equals("/tsla"))
+        if (command.equals("/tsla")&&orarioc>=153000&&orarioc<=220000)
         {
             LockFile lf = new LockFile("TSLA.lock", "writeTSLA.lock" );
 
@@ -163,8 +174,21 @@ public class simpleBot extends TelegramLongPollingBot {
 
 
         }
+        else
+        {
+            String message00 = "La Borsa è attualmente chiusa. ";
+            SendMessage response00 = new SendMessage();
+            response00.setChatId(update.getMessage().getChatId().toString());
+            response00.setText(message00);
 
-        if (command.equals("/aapl"))
+            try {
+                execute(response00);
+            } catch (TelegramApiException E) {
+                E.printStackTrace();
+            }
+        }
+
+        if (command.equals("/aapl")&&orarioc>=153000&&orarioc<=220000)
         {
             LockFile lf = new LockFile("AAPL.lock", "writeAAPL.lock" );
 
@@ -261,8 +285,21 @@ public class simpleBot extends TelegramLongPollingBot {
 
 
         }
+        else
+        {
+            String message02 = "La Borsa è attualmente chiusa. ";
+            SendMessage response02 = new SendMessage();
+            response02.setChatId(update.getMessage().getChatId().toString());
+            response02.setText(message02);
 
-        if (command.equals("/amzn"))
+            try {
+                execute(response02);
+            } catch (TelegramApiException E) {
+                E.printStackTrace();
+            }
+        }
+
+        if (command.equals("/amzn")&&orarioc>=153000&&orarioc<=220000)
         {
             LockFile lf = new LockFile("AMZN.lock", "writeAMZN.lock" );
 
@@ -358,8 +395,21 @@ public class simpleBot extends TelegramLongPollingBot {
             }
 
         }
+        else
+        {
+            String message03 = "La Borsa è attualmente chiusa. ";
+            SendMessage response03 = new SendMessage();
+            response03.setChatId(update.getMessage().getChatId().toString());
+            response03.setText(message03);
 
-        if (command.equals("/spy"))
+            try {
+                execute(response03);
+            } catch (TelegramApiException E) {
+                E.printStackTrace();
+            }
+        }
+
+        if (command.equals("/spy")&&orarioc>=153000&&orarioc<=220000)
         {
             LockFile lf = new LockFile("SPY.lock", "writeSPY.lock" );
 
@@ -456,8 +506,21 @@ public class simpleBot extends TelegramLongPollingBot {
 
 
         }
+        else
+        {
+            String message04 = "La Borsa è attualmente chiusa. ";
+            SendMessage response04 = new SendMessage();
+            response04.setChatId(update.getMessage().getChatId().toString());
+            response04.setText(message04);
 
-        if (command.equals("/meta"))
+            try {
+                execute(response04);
+            } catch (TelegramApiException E) {
+                E.printStackTrace();
+            }
+        }
+
+        if (command.equals("/meta")&&orarioc>=153000&&orarioc<=220000)
         {
             LockFile lf = new LockFile("META.lock", "writeMETA.lock" );
 
@@ -552,6 +615,19 @@ public class simpleBot extends TelegramLongPollingBot {
             }
 
 
+        }
+        else
+        {
+            String message05 = "La Borsa è attualmente chiusa. ";
+            SendMessage response05 = new SendMessage();
+            response05.setChatId(update.getMessage().getChatId().toString());
+            response05.setText(message05);
+
+            try {
+                execute(response05);
+            } catch (TelegramApiException E) {
+                E.printStackTrace();
+            }
         }
     }
 
