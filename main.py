@@ -1,6 +1,7 @@
 # Script che esegue il parsing del file JSON ricevuto in output dalle API di yahoo finance.
 # Autore : Matteo Sepa
 # Progetto di gruppo pcto classe 4j
+# Licenza Pubblica Creative Commons Attribuzione-NonCommerciale-CondividiAlloStessoModo 4.0 Internazionale
 
 import requests
 import os
