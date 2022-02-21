@@ -1,3 +1,4 @@
+// Licenza Pubblica Creative Commons Attribuzione-NonCommerciale-CondividiAlloStessoModo 4.0 Internazionale
 import java.util.Scanner;
 import java.io.*;
 import java.io.BufferedReader;
