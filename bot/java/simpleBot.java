@@ -1,4 +1,5 @@
-//Autore: Alberto Iovino
+// Autore: Alberto Iovino
+// Licenza Pubblica Creative Commons Attribuzione-NonCommerciale-CondividiAlloStessoModo 4.0 Internazionale
 
 import org.telegram.telegrambots.bots.TelegramLongPollingBot;
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
