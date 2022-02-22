@@ -1,0 +1,643 @@
+<!DOCTYPE html>
+<html lang="en">
+<title>Progetto 4J</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" type="text/css" href="style.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins">
+<style>
+body,h1,h2,h3,h4,h5 {font-family: "Poppins", sans-serif}
+body {font-size:16px;}
+.w3-half img{margin-bottom:-6px;margin-top:16px;opacity:0.8;cursor:pointer}
+.w3-half img:hover{opacity:1}
+</style>
+<body>
+
+<!-- Sidebar -->
+<nav class="w3-sidebar w3-purple w3-collapse w3-top w3-large w3-padding" style="z-index:3;width:300px;font-weight:bold;" id="mySidebar"><br>
+  <a href="javascript:void(0)" onclick="w3_close()" class="w3-button w3-hide-large w3-display-topleft" style="width:100%;font-size:22px">Chiudi Menu</a>
+  <!-- Lingue -->
+  <div class="w3-container">
+    <h3 class="w3-padding-64"><b>LINGUA</b></h3>
+  </div>
+  <div class="w3-bar-block">
+    <a href="index.html" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Italiano <img src="images/bandiera_italia.jpg" alt="Image" style="width:25px;height:20px;"></a>
+    <a href="tedesco.html" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Deutsch <img src="images/bandiera_germania.jpg" alt="Image" style="width:25px;height:20px;"></a>
+    <a href="inglese.html" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">English <img src="images/bandiera_inglese.png" alt="Image" style="width:25px;height:20px;"></a>
+  </div>
+  <!-- Menu -->
+  <div class="w3-container">
+    <h3 class="w3-padding-64"><b>INDICE</b></h3>
+  </div>
+  <div class="w3-bar-block">
+    <a href="#" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Home</a> 
+    <a href="#Introduzione" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Introduzione</a>
+    <a href="#TCP" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Protocollo TCP</a>
+    <a href="#DNS" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">DNS</a>
+    <a href="#HTTP" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">HTTP</a>
+    <a href="#CSV" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">CSV</a>
+    <a href="#API" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">API</a>
+    <a href="#Bot" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Bot Telegram</a>
+    <a href="#JSON" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">JSON</a>
+    <a href="#Java" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Java</a> 
+    <a href="#Python" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Python</a>  
+    <a href="#Requests" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Requests</a>
+    <a href="#Download" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Download</a>
+    <a href="#Crediti" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Crediti</a>
+    <p></p>
+  </div>
+</nav>
+
+<!-- Top menu on small screens -->
+<header class="w3-container w3-top w3-hide-large w3-purple w3-xlarge w3-padding">
+  <a href="javascript:void(0)" class="w3-button w3-purple w3-margin-right" onclick="w3_open()">☰</a>
+  <span>Classe 4J</span>
+</header>
+
+<!-- Overlay effect when opening sidebar on small screens -->
+<div class="w3-overlay w3-hide-large" onclick="w3_close()" style="cursor:pointer" title="close side menu" id="myOverlay"></div>
+
+  <!-- !PAGE CONTENT! -->
+  <div class="w3-main" style="margin-left:340px;margin-right:40px">
+
+    <!-- Introduzione -->
+    <div class="w3-container" style="margin-top:80px" id="Introduzione">
+     <h1 class="w3-jumbo">FinanceBot</h1>
+     <h1 class="w3-xxxlarge w3-text-purple"><b>Introduzione</b></h1>
+     <hr style="width:50px;border:5px solid purple" class="w3-round">
+     <p>Siamo una classe di un istituto tecnico di indirizzo informatico. Insieme abbiamo realizzato un programma che
+        monitora titoli NASDAQ attraverso API di Yahoo finance. I dati elaborati verrano poi processati da un bot di
+        telegram.<br>Link al BOT Telegram: <a href="https://t.me/Finance_Bot_PCTO" target="_blank" onclick="w3_close()">FinanceBot</a>
+      </p>
+    </div>
+
+    <!-- Protocollo TCP -->
+  <div class="w3-container" id="TCP" style="margin-top:75px">
+    <h1 class="w3-xxxlarge w3-text-purple"><b>Protocollo TCP</b></h1>
+    <hr style="width:50px;border:5px solid purple" class="w3-round">
+    <p>Il protocollo tcp (transmission control protocol) è un accordo standardizzato per la
+      trasmissione dei dati tra diversi utenti di una rete informatica.
+    </p>
+    <p>Lo stato di sviluppo odierno del protocollo TCP permette a due punti terminali all’interno di
+      una rete informatica comune di realizzare una connessione attraverso cui può avvenire
+      una trasmissione bidirezionale dei dati. Nell’ambito di questa connessione, le eventuali
+      perdite di dati vengono riconosciute e corrette automaticamente; per questo, il TCP viene
+      denominato anche protocollo affidabile. Nella famiglia di protocolli Internet, il TCP
+      costituisce, insieme all’UDP e all’SCTP, il gruppo dei protocolli di trasporto che, sulla base
+      del modello OSI, vengono classificati nell’architettura di rete al livello di trasporto. Poiché,
+      in quasi tutti i casi, il protocollo TCP si basa sul protocollo Internet (IP) e questa
+      combinazione rappresenta la base per la maggior parte delle reti pubbliche e locali e per i
+      servizi di rete, spesso si parla anche di pila di protocolli TCP/IP, intendendo in senso lato
+      la famiglia di protocolli Internet.
+    </p>
+
+    <!-- Photo grid (modal) -->
+    <div class="w3-row-padding">
+      <div class="w3-half">
+        <img src="images/TCP.png" style="width:100%" onclick="onClick(this)" alt="Tabella TCP Header">
+      </div>
+    </div>
+
+    <!-- Modal for full size images on click-->
+   <div id="modal01" class="w3-modal w3-black" style="padding-top:0" onclick="this.style.display='none'">
+     <span class="w3-button w3-black w3-xxlarge w3-display-topright">×</span>
+     <div class="w3-modal-content w3-animate-zoom w3-center w3-transparent w3-padding-64">
+       <img id="img01" class="w3-image">
+       <p id="caption"></p>
+     </div>
+    </div><br>
+
+    <hr style="width:50px;border:5px solid purple" class="w3-round">
+    <p><font size="5">Come funziona?</font><br><br>
+      Il TCP permette la trasmissione delle informazioni in entrambe le direzioni. I sistemi
+      informatici che comunicano tramite TCP possono pertanto inviare e ricevere dati
+      contemporaneamente, proprio come avviene durante una conversazione telefonica. Le
+      unità di trasmissione fondamentali utilizzate dal protocollo sono i segmenti (pacchetti) che,
+      oltre al carico utile (ossia il messaggio effettivo), possono contenere anche informazioni di
+      controllo e sono limitati a una dimensione di 1.500 byte. L’instaurazione e l’interruzione
+      delle connessioni, classificabili come connessioni punto-a-punto, nonché la trasmissione
+      stessa dei dati vengono acquisiste dal software TCP nella pila di protocolli di rete del
+      rispettivo sistema operativo.
+    </p>
+  </div>
+
+  <!-- DNS -->
+  <div class="w3-container" id="DNS" style="margin-top:75px">
+    <h1 class="w3-xxxlarge w3-text-purple"><b>DNS</b></h1>
+    <hr style="width:50px;border:5px solid purple" class="w3-round">
+    <p>DNS è l’acronimo di Domain Name System e, per spiegarlo in breve, è il sistema che
+      traduce gli indirizzi IP in nomi di dominio.<br>
+      Quando navighiamo sul web, nella barra degli indirizzi del browser scriviamo il dominio di
+      un sito, per esempio google.it.
+    </p>
+    <hr style="width:50px;border:5px solid purple" class="w3-round">
+    <p><font size="5">Ciò che accade a livello tecnico è questo:</font><br><br>
+      1) Il browser prende il dominio da te inserito;<br>
+      2) Questo dominio è associato ad un indirizzo IP;<br>
+      3) L’indirizzo IP è una serie di numeri che identifica un determinato server, ossia un
+      computer all’interno del quale si trova il
+      sito web;<br>
+      4) Il DNS traduce il nome del dominio in
+      indirizzo IP, e viceversa.<br>
+    </p>
+    <hr style="width:50px;border:5px solid purple" class="w3-round">
+    <p><font size="5">A cosa serve il DNS?</font><br><br>
+      Il dns servono a effettuare una traduzione dal nome (il dominio) al numero (indirizzo ip),
+      come per esempio la rubrica di un telefono. Quindi invece che scrivere tutto l’indirizzo ip
+      basta digitare il nome della persona che vuoi chiamare.<br>
+      Un altro esempio può essere un sito web, invece che scrivere tutto l’indirizzo ip basta
+      digitare il nome del sito, come può essere Amazon.com.
+    </p>
+
+    <!-- Photo grid (modal) -->
+    <div class="w3-row-padding">
+      <div class="w3-half">
+        <img src="images/DNS.png" style="width:100%" onclick="onClick(this)" alt="Logo DNS">
+      </div>
+    </div>
+
+    <!-- Modal for full size images on click-->
+   <div id="modal01" class="w3-modal w3-black" style="padding-top:0" onclick="this.style.display='none'">
+     <span class="w3-button w3-black w3-xxlarge w3-display-topright">×</span>
+     <div class="w3-modal-content w3-animate-zoom w3-center w3-transparent w3-padding-64">
+       <img id="img01" class="w3-image">
+       <p id="caption"></p>
+     </div>
+    </div>
+  </div>
+
+    <!-- HTTP -->
+  <div class="w3-container" id="HTTP" style="margin-top:75px">
+    <h1 class="w3-xxxlarge w3-text-purple"><b>HTTP</b></h1>
+    <hr style="width:50px;border:5px solid purple" class="w3-round">
+    <p>HTTP (Hypertext Transfer Protocol, letteralmente protocollo di trasferimento di un
+      ipertesto) è un linguaggio di testo che consente la comunicazione tra client e server
+      attraverso internet. Dunque ogni qualvolta visitiamo un sito internet, HTTP ci consente di
+      visualizzare le risorse di quel sito.
+    </p>
+    <hr style="width:50px;border:5px solid purple" class="w3-round">
+    <p><font size="5">Come funziona HTTP request e response:</font><br><br>
+      Dopo aver introdotto brevemente il protocollo HTTP adesso vediamo il suo funzionamento
+      passo passo, analizzando come è fatta una richiesta HTTP e la successiva risposta da
+      parte del server.
+    </p>
+    <p><font size="4">1) Request (il client invia una richiesta):</font><br><br>
+      Ogni conversazione tra client e server sul web inizia con una richiesta, un messaggio di
+      testo creato dal client in un formato speciale noto appunto come HTTP.<br><br>
+      Una richiesta HTTP è composta dalle seguenti parti:<br>
+      • [method] [URI] [version]<br>
+      • [headers]<br>
+      • [body]<br><br>
+      La prima riga di una richiesta HTTP è la più importante e contiene due parti fondamentali:<br>
+    • Il metodo HTTP (GET)<br>
+    • L'URI (/blog/protocollo-http-cosa-e-come-funziona)<br><br>
+    L'URI è l'indirizzo o il percorso univoco che identifica la risorsa che il client desidera. Il
+    metodo HTTP definisce ciò che il client vuole fare con la risorsa.
+    </p>
+    <p><font size="4">2) Request methods (metodi di una richiesta HTTP):</font><br><br>
+      I metodi HTTP definiscono i modi in cui il client può interagire con la risorsa. La tabella
+      seguente mostra alcuni dei metodi utilizzati durante una richiesta HTTP.
+    </p>
+
+    <!-- Photo grid (modal) -->
+    <div class="w3-row-padding">
+      <div class="w3-half">
+        <img src="images/http.png" style="width:100%" onclick="onClick(this)" alt="Tabella metodi di una richiesta HTTP">
+      </div>
+    </div>
+
+    <!-- Modal for full size images on click-->
+   <div id="modal01" class="w3-modal w3-black" style="padding-top:0" onclick="this.style.display='none'">
+     <span class="w3-button w3-black w3-xxlarge w3-display-topright">×</span>
+     <div class="w3-modal-content w3-animate-zoom w3-center w3-transparent w3-padding-64">
+       <img id="img01" class="w3-image">
+       <p id="caption"></p>
+     </div>
+    </div>
+  </div>
+
+<!-- CSV -->
+  <div class="w3-container" id="CSV" style="margin-top:75px">
+    <h1 class="w3-xxxlarge w3-text-purple"><b>CSV</b></h1>
+    <hr style="width:50px;border:5px solid purple" class="w3-round">
+    <p>Un file CSV(Comma Separated Values) è tra i formati più diffusi per immagazzinare dati
+      tabellari e vengono usati principalmente per gestire una grande mole di dati.
+    </p>
+    <p>Gli elementi del csv sono comunemente separati da una virgola. Solitamente nella prima
+      riga vengono rappresentate le colonne della nostra tabella, mentre nelle righe successive
+      vengono rappresentati i valori.
+    </p>
+    <hr style="width:50px;border:5px solid purple" class="w3-round">
+    <p><font size="5">Come leggere un file CSV?</font><br><br>
+      La pratica più comune per interagire con un file csv in python è quella di utilizzare la
+      libreria omonima. Partiamo subito importandola nel nostro script: import csv.
+    </p>
+    <p>Per leggere il contenuto del nostro file possiamo utilizzare il metodo csv.reader().</p>
+    <p>Nel caso in cui il nostro file.csv usi come delimitatore un carattere diverso dalla virgola,
+      dobbiamo specificarlo passando un secondo parametro al metodo csv.reader(). Questo
+      parametro si chiama delimiter e di default è valorizzato con la virgola.
+    </p>
+    <p>Inoltre, chiamando il metodo csv.DictReader() al posto del csv.reader(), otteniamo il
+      contenuto del csv in un dizionario.
+    </p>
+    <hr style="width:50px;border:5px solid purple" class="w3-round">
+    <p><font size="5">Come scrivere su un file CSV?</font><br><br>
+      • Per scrivere un file csv in python è possibile usare il metodo write_row()dell'oggetto writer, che viene recuperato chiamando il metodo csv.writer()<br>
+      • Per vedere il risultato bisogna riprendere lo script scritto in precedenza per leggere il file, cambiare il nome del csv con quello che abbiamo generato ed eseguirlo<br>
+      • Come per la lettura, anche nella scrittura si può definire il carattere delimitatore nel metodo csv.writer(file, delimiter=";")<br>
+      • Usando il metodo csv.DictWriter() si può creare un csv da un dizionario in questo modo<br>
+      • Tenere a mente che in questo caso è necessario definire le colonne che si vogliono utilizzare<br>
+    </p>
+
+    <!-- Photo grid (modal) -->
+    <div class="w3-row-padding">
+      <div class="w3-half">
+        <img src="images/CSV.png" style="width:100%" onclick="onClick(this)" alt="Logo CSV">
+      </div>
+    </div>
+
+    <!-- Modal for full size images on click-->
+   <div id="modal01" class="w3-modal w3-black" style="padding-top:0" onclick="this.style.display='none'">
+     <span class="w3-button w3-black w3-xxlarge w3-display-topright">×</span>
+     <div class="w3-modal-content w3-animate-zoom w3-center w3-transparent w3-padding-64">
+       <img id="img01" class="w3-image">
+       <p id="caption"></p>
+     </div>
+    </div> 
+ </div>
+
+    <!-- API -->
+  <div class="w3-container" id="API" style="margin-top:75px">
+    <h1 class="w3-xxxlarge w3-text-purple"><b>API</b></h1>
+    <hr style="width:50px;border:5px solid purple" class="w3-round">
+    <p>API è l'abbreviazione di interfaccia di programmazione delle applicazioni (application
+      programming interface), ovvero un insieme di definizioni e protocolli per la creazione e
+      l'integrazione di software applicativi. Intuitivamente sono quindi alla base di una vastità di
+      applicativi, servizi, siti web, dispositivi.<br>
+      Le API sono nate con la nascita
+      stessa dell'informatica, ben prima dei
+      personal computer.
+    </p>
+    <hr style="width:50px;border:5px solid purple" class="w3-round">
+    <p><font size="5">Cosa sono le API e come funzionano?</font><br><br>
+      L'Application Programming Interface viene solitamente fornita dagli sviluppatori di un
+      software in modo che i programmatori di altre applicazioni possano utilizzarla. L'interfaccia
+      di programmazione determina come le informazioni e i dati vengono ricevuti e restituiti tra i
+      moduli.
+    </p>
+
+      <!-- Photo grid (modal) -->
+    <div class="w3-row-padding">
+      <div class="w3-half">
+        <img src="images/API.png" style="width:100%" onclick="onClick(this)" alt="Esempio di utilizzo del API">
+      </div>
+    </div>
+
+    <!-- Modal for full size images on click-->
+    <div id="modal01" class="w3-modal w3-black" style="padding-top:0" onclick="this.style.display='none'">
+      <span class="w3-button w3-black w3-xxlarge w3-display-topright">×</span>
+      <div class="w3-modal-content w3-animate-zoom w3-center w3-transparent w3-padding-64">
+        <img id="img01" class="w3-image">
+        <p id="caption"></p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bot Telegram -->
+  <div class="w3-container" id="Bot" style="margin-top:75px">
+    <h1 class="w3-xxxlarge w3-text-purple"><b>Bot Telegram</b></h1>
+    <hr style="width:50px;border:5px solid purple" class="w3-round">
+    <p>Per creare un bot di telegram abbiamo bisogno di un modulo chiamato python-telegrambot.
+      Questa libreria fornisce un interfaccia python pura per l’ API di telegram bot.
+    </p>
+    <p>Per creare un bot telegram python dobbiamo effettuare questi procedimenti:<br><br>
+      1) Preparare le dipendenze. La prima cosa da fare per creare un chatbot in python con
+      la libreria ChatterBot è installare la libreria nel tuo sistema<br>
+      2) Classi di importazione<br>
+      3) Creare e addestrare il chatbot<br>
+      4) Comunicare con python chatbot<br>
+      5) Addestrare il tuo chatbot python con un corpus di dati<br>
+    </p>
+
+      <!-- Photo grid (modal) -->
+    <div class="w3-row-padding">
+      <div class="w3-half">
+        <img src="images/telegramBOT.jpg" style="width:100%" onclick="onClick(this)" alt="Logo BOT Telegram">
+      </div>
+    </div>
+
+    <!-- Modal for full size images on click-->
+    <div id="modal01" class="w3-modal w3-black" style="padding-top:0" onclick="this.style.display='none'">
+      <span class="w3-button w3-black w3-xxlarge w3-display-topright">×</span>
+      <div class="w3-modal-content w3-animate-zoom w3-center w3-transparent w3-padding-64">
+        <img id="img01" class="w3-image">
+        <p id="caption"></p>
+      </div>
+    </div>
+  </div>
+
+  <!-- JSON -->
+  <div class="w3-container" id="JSON" style="margin-top:75px">
+    <h1 class="w3-xxxlarge w3-text-purple"><b>JSON</b></h1>
+    <hr style="width:50px;border:5px solid purple" class="w3-round">
+    <p>JSON è un formato di serializzazione basato su testo per lo scambio di dati,
+      principalmente tra server e applicazione web. JSON è l'acronimo di JavaScript Object
+      Notation, e utilizza l'estensione di file .json.<br>
+      JSON è un concorrente di XML, ma possiede una sintassi più semplice e compatta
+      rispetto al rivale.
+    </p>
+    <hr style="width:50px;border:5px solid purple" class="w3-round">
+    <p><font size="5">Come funziona il JSON:</font><br><br>
+      1) I dati sono scritti come coppia chiave-valore<br>
+      2) I dati sono separati da una virgola<br>
+      3) Le parentesi graffe contengono gli oggetti<br>
+      4) Le parentesi quadre contengono gli array<br>
+      5) Le stringhe vanno racchiuse con i doppi apici<br>
+    </p>
+      <!-- Photo grid (modal) -->
+    <div class="w3-row-padding">
+      <div class="w3-half">
+        <img src="images/json.jpg" style="width:100%" onclick="onClick(this)" alt="Esempio di codice in JSON">
+      </div>
+    </div>
+
+    <!-- Modal for full size images on click-->
+    <div id="modal01" class="w3-modal w3-black" style="padding-top:0" onclick="this.style.display='none'">
+      <span class="w3-button w3-black w3-xxlarge w3-display-topright">×</span>
+      <div class="w3-modal-content w3-animate-zoom w3-center w3-transparent w3-padding-64">
+        <img id="img01" class="w3-image">
+        <p id="caption"></p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Java -->
+  <div class="w3-container" id="Java" style="margin-top:75px">
+    <h1 class="w3-xxxlarge w3-text-purple"><b>Java</b></h1>
+    <hr style="width:50px;border:5px solid purple" class="w3-round">
+    <p>Java è un linguaggio di programmazione ad alto livello, basato su classi
+      e metodi, ed orientato agli oggetti. I dati sono rappresentati come oggetti
+      e le operazioni come metodi che operano su essi.</p>
+    <p>Questo linguaggio di programmazione è stato pensato per lo sviluppo di applicazioni in reti
+      e per essere il più possibile indipendente dalla piattaforma Hardware di esecuzione.
+    </p>
+    <hr style="width:50px;border:5px solid purple" class="w3-round">
+    <p><font size="5">Vantaggi e svantaggi:</font><br><br>
+      I vantaggi sono:<br>
+     • Compatibilità multipiattaforma (grazie alla Virtual Machine)<br>
+     • Alta astrazione dalla macchina fisica<br>
+     • Velocità di sviluppo<br>
+     • Grande disponibilità di librerie<br>
+     • Compatibilità con sistemi palmari ed embedded<br>
+     • Alta integrazione con il web<br>
+    </p>
+    <p>Gli svantaggi sono:<br>
+     • Lentezza (grazie alla Virtual Machine)<br>
+     • Alta astrazione dalla macchina fisica (che non permette di fare tutto ciò che si vuole)<br>
+     • È decompilabile<br>
+    </p>
+      <!-- Photo grid (modal) -->
+    <div class="w3-row-padding">
+      <div class="w3-half">
+        <img src="images/java.jpg" style="width:100%" onclick="onClick(this)" alt="Logo Java">
+      </div>
+    </div>
+
+    <!-- Modal for full size images on click-->
+    <div id="modal01" class="w3-modal w3-black" style="padding-top:0" onclick="this.style.display='none'">
+      <span class="w3-button w3-black w3-xxlarge w3-display-topright">×</span>
+      <div class="w3-modal-content w3-animate-zoom w3-center w3-transparent w3-padding-64">
+        <img id="img01" class="w3-image">
+        <p id="caption"></p>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Python -->
+  <div class="w3-container" id="Python" style="margin-top:75px">
+    <h1 class="w3-xxxlarge w3-text-purple"><b>Python</b></h1>
+    <hr style="width:50px;border:5px solid purple" class="w3-round">
+    <p>Python è un linguaggio di programmazione di più alto livello
+      rispetto alla maggior parte degli altri linguaggi, ed è anch'esso
+      basato su oggetti. Tra gli usi comuni, Python è adatto a
+      sviluppare applicazioni distribuite, scripting, computazione
+      numerica, system testing, siti web, software ecc.
+      Inoltre sono disponibili molte librerie Python in campo educativo e scientifico.
+    </p>
+    <hr style="width:50px;border:5px solid purple" class="w3-round">
+    <p><font size="5">Vantaggi e svantaggi:</font><br><br>
+      Uno dei vantaggi più grandi è la facilità e la pulizia della sua sintassi che rende da subito
+      molto chiaro il codice, inoltre grazie al supporto della Python Software Foundation si
+      avvale di una libreria built-in molto ampia che lo rende uno dei linguaggi di
+      programmazione più ricchi e pratici. Python si può definire un linguaggio pseudo
+      complicato e portabile, infatti un interprete può analizzare il codice sorgente per poi
+      eseguirlo nel caso lo ritenga corretto dato che non è prevista una fase di compilazione
+      separata da cui possa essere generato un file eseguibile.<br><br>
+      Uno degli svantaggi più grandi è di sicuro la mancanza di tipi, quindi una mancanza di
+      controllo statico. Inoltre i compilatore di Python non è capace di trovare molti errori e la
+      mancanza d controllo dei valori ritornati dalle funzioni. Infatti, siamo obbligati a cercare tutti
+      i casi, e spesso i codici che gestiscono gli errori sono difficili da raggiungere.
+    </p>
+
+      <!-- Photo grid (modal) -->
+    <div class="w3-row-padding">
+      <div class="w3-half">
+        <img src="images/python.png" style="width:100%" onclick="onClick(this)" alt="Logo Python">
+      </div>
+    </div>
+
+    <!-- Modal for full size images on click-->
+    <div id="modal01" class="w3-modal w3-black" style="padding-top:0" onclick="this.style.display='none'">
+      <span class="w3-button w3-black w3-xxlarge w3-display-topright">×</span>
+      <div class="w3-modal-content w3-animate-zoom w3-center w3-transparent w3-padding-64">
+        <img id="img01" class="w3-image">
+        <p id="caption"></p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Requests -->
+  <div class="w3-container" id="Requests" style="margin-top:75px">
+    <h1 class="w3-xxxlarge w3-text-purple"><b>Requests</b></h1>
+    <hr style="width:50px;border:5px solid purple" class="w3-round">
+    <p>Requests è una libreria di python che ci permette di effettuare una richiesta http/https in
+      modo semplice ed immediato basata su urllib3.<br>Usiamo pip per installarlo, quindi apriamo
+      il terminale come amministratore e digitiamo pip install requests.
+    </p>
+      <!-- Photo grid (modal) -->
+    <div class="w3-row-padding">
+      <div class="w3-half">
+        <img src="images/requests.png" style="width:100%" onclick="onClick(this)" alt="Logo Requests">
+      </div>
+    </div>
+
+    <!-- Modal for full size images on click-->
+    <div id="modal01" class="w3-modal w3-black" style="padding-top:0" onclick="this.style.display='none'">
+      <span class="w3-button w3-black w3-xxlarge w3-display-topright">×</span>
+      <div class="w3-modal-content w3-animate-zoom w3-center w3-transparent w3-padding-64">
+        <img id="img01" class="w3-image">
+        <p id="caption"></p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Download -->
+  <div class="w3-container" id="Download" style="margin-top:75px">
+    <h1 class="w3-xxxlarge w3-text-purple"><b>Download</b></h1>
+    <hr style="width:50px;border:5px solid purple" class="w3-round">
+    <div class="w3-row-padding">
+    <div class="w3-half w3-margin-bottom">
+      <ul class="w3-ul w3-light-grey w3-center">
+        <li class="w3-dark-grey w3-xlarge w3-padding-32">DOCUMENTI</li>
+        <li class="w3-padding-16"><a href="documents/italiano.pdf" target='_blank' title="Scarica">Italiano</a></li>
+        <li class="w3-padding-16"><a href="documents/deutsch.pdf" target='_blank' title="Scarica">Tedesco</a></li>
+        <li class="w3-padding-16"><a href="documents/english.pdf" target='_blank' title="Scarica">Inglese</a></li>
+        <li class="w3-padding-16"><a href="documents/parser.pdf" target='_blank' title="Scarica">Documentazione Parser</a></li>
+        <li class="w3-padding-16"><a href="documents/BOT.pdf" target='_blank' title="Scarica">Documentazione BOT</a></li>
+      </ul>
+    </div>
+    <div class="w3-half">
+      <ul class="w3-ul w3-light-grey w3-center">
+        <li class="w3-purple w3-xlarge w3-padding-32">PROGRAMMA</li>
+        <li class="w3-padding-16"><a href="documents/FinanceBot.zip" target='_blank' title="Scarica">FinanceBot</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Crediti -->
+  <div class="w3-container" id="Crediti" style="margin-top:75px">
+    <h1 class="w3-xxxlarge w3-text-purple"><b>Crediti</b></h1>
+    <hr style="width:50px;border:5px solid purple" class="w3-round">
+
+    <!-- The Team -->
+    <div class="w3-row-padding w3-grayscale">
+      <div class="w3-col m4 w3-margin-bottom">
+        <div class="w3-light-grey">
+          <img src="images/alberto.webp" alt="Thomas" style="width:100%">
+          <div class="w3-container">
+            <h3>Alberto Iovino</h3>
+            <p class="w3-opacity">Project Leader</p>
+            <p>Sviluppo del BOT Telegram</p>
+          </div>
+        </div>
+      </div>
+      <div class="w3-col m4 w3-margin-bottom">
+        <div class="w3-light-grey">
+          <img src="images/esempio.jpg" alt="Jack" style="width:100%">
+          <div class="w3-container">
+            <h3>Arianna Vaccaro</h3>
+            <p class="w3-opacity">Leader gruppo Sviluppo</p>
+            <p>Sviluppo del lettore del file CSV che passa i dati al BOT</p>
+          </div>
+        </div>
+      </div>
+      <div class="w3-col m4 w3-margin-bottom">
+        <div class="w3-light-grey">
+          <img src="images/esempio.jpg" alt="Mike" style="width:100%">
+          <div class="w3-container">
+            <h3>Alessandro Di Natale</h3>
+            <p class="w3-opacity">Gruppo Sviluppo</p>
+            <p>Sviluppo del lettore del file CSV che passa i dati al BOT</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="w3-row-padding w3-grayscale">
+      <div class="w3-col m4 w3-margin-bottom">
+        <div class="w3-light-grey">
+          <img src="images/esempio.jpg" alt="Thomas" style="width:100%">
+          <div class="w3-container">
+            <h3>Belal Niederegger</h3>
+            <p class="w3-opacity">Gruppo Sviluppo</p>
+            <p>Sviluppo del lettore del file CSV che passa i dati al BOT</p>
+          </div>
+        </div>
+      </div>
+      <div class="w3-col m4 w3-margin-bottom">
+        <div class="w3-light-grey">
+          <img src="images/ye.jpg" alt="Jack" style="width:100%">
+          <div class="w3-container">
+            <h3>Matteo Sepa</h3>
+            <p class="w3-opacity">Gruppo Sviluppo</p>
+            <p>Svilluppo dello script Python che sfrutta API Yahoo Finance</p>
+          </div>
+        </div>
+      </div>
+      <div class="w3-col m4 w3-margin-bottom">
+        <div class="w3-light-grey">
+          <img src="images/esempio.jpg" alt="Mike" style="width:100%">
+          <div class="w3-container">
+            <h3>Danil Leggieri</h3>
+            <p class="w3-opacity">Leader gruppo Documentazione</p>
+            <p>Sviluppo dei file PDF in LATEX</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="w3-row-padding w3-grayscale">
+      <div class="w3-col m4 w3-margin-bottom">
+        <div class="w3-light-grey">
+          <img src="images/apo.webp" alt="Thomas" style="width:100%">
+          <div class="w3-container">
+            <h3>Luca Apolloni</h3>
+            <p class="w3-opacity">Gruppo Documentazione</p>
+            <p>Contenuto teorico</p>
+          </div>
+        </div>
+      </div>
+      <div class="w3-col m4 w3-margin-bottom">
+        <div class="w3-light-grey">
+          <img src="images/lukas.webp" alt="Jack" style="width:100%">
+          <div class="w3-container">
+            <h3>Lukas Barbieri</h3>
+            <p class="w3-opacity">Gruppo Documentazione</p>
+            <p>Contenuto teorico</p>
+          </div>
+        </div>
+      </div>
+      <div class="w3-col m4 w3-margin-bottom">
+        <div class="w3-light-grey">
+          <img src="images/ranine.jpg" alt="Mike" style="width:100%">
+          <div class="w3-container">
+            <h3>Alex Weber</h3>
+            <p class="w3-opacity">Gruppo Documentazione</p>
+            <p>Sviluppo del sito Web</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- End page content -->
+  </div>
+
+  <!-- W3.CSS Container -->
+  <div class="w3-light-grey w3-container w3-padding-32" style="margin-top:75px;padding-right:58px"><p class="w3-right">Powered by Alex Weber<br>
+    <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank"><img alt="Licenza Creative Commons" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" /></a><br /><font size=2>Quest'opera è distribuita con Licenza<br> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">Creative Commons Attribuzione - Non commerciale<br> - Condividi allo stesso modo 4.0 Internazionale</font></a><br>
+    <a href="documents/prova.html" target="_blank" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white"><font size=1>Poesia del giorno</font></a></p></div>
+
+  <script>
+  // Script to open and close sidebar
+  function w3_open() {
+    document.getElementById("mySidebar").style.display = "block";
+    document.getElementById("myOverlay").style.display = "block";
+  }
+ 
+  function w3_close() {
+   document.getElementById("mySidebar").style.display = "none";
+   document.getElementById("myOverlay").style.display = "none";
+  }
+
+  // Modal Image Gallery
+  function onClick(element) {
+   document.getElementById("img01").src = element.src;
+   document.getElementById("modal01").style.display = "block";
+   var captionText = document.getElementById("caption");
+   captionText.innerHTML = element.alt;
+  }
+  </script>
+
+  </body>
+</html>
