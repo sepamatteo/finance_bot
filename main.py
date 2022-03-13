@@ -90,6 +90,8 @@ def main():
     
     system_time = 0
 
+    API_KEY = input("Inserire la chiave API: ")
+    
     csvExists = False
     folder1Exists = False
     folder2Exists = False
@@ -117,7 +119,7 @@ def main():
 
             headers = {
                 'x-rapidapi-host': "yh-finance.p.rapidapi.com",
-                'x-rapidapi-key': "e436c85dcamshc083060f1654afbp178104jsna2346f0cf0c3"
+                'x-rapidapi-key': API_KEY
                 }
 
             
