@@ -116,7 +116,7 @@ def main():
             checkFolder(folder1Exists, folder2Exists, 'json', 'csv')
             
             # se l'orario di sistema è compreso tra le 15:30 e le 22:00 (apertura-chiusura borsa americana)
-            if system_time >= 000000 and system_time <= 230000:
+            if system_time >= 000000 and system_time <= 220000:
                 
                 i = 0
                 titolo = ["TSLA", "AAPL", "AMZN", "SPY", "FB"]
