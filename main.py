@@ -40,6 +40,13 @@ def getSystemTime(a):
     a = int(a.strftime("%H%M%S"))
     return a
 
+def readKey(a):
+
+    file = open("key", "r")
+    a = file.readline()
+    file.close()
+    return a
+
 def checkFile(a, b):
     
     a = exists(b)
@@ -90,162 +97,167 @@ def main():
     
     system_time = 0
 
-    API_KEY = input("Inserire la chiave API: ")
+    key = ""
+    API_KEY = readKey(key)
     
-    csvExists = False
-    folder1Exists = False
-    folder2Exists = False
-
-    j = 0
-    
-    
-    while esci != True:
-
-        system_time = getSystemTime(system_time)
-        #print (system_time)
-        checkFolder(folder1Exists, folder2Exists, 'json', 'csv')
+    if (API_KEY != ""):
         
-        # se l'orario di sistema è compreso tra le 15:30 e le 22:00 (apertura-chiusura borsa americana)
-        if system_time >= 153000 and system_time <= 220000:
-            
-            i = 0
-            titolo = ["TSLA", "AAPL", "AMZN", "SPY", "FB"]
-            name = ["TSLA", "AAPL", "AMZN", "SPY", "FB"]
-            
-            
-            url = "https://yh-finance.p.rapidapi.com/market/v2/get-quotes"
+        csvExists = False
+        folder1Exists = False
+        folder2Exists = False
 
-            
+        j = 0
+        
+        
+        while esci != True:
 
-            headers = {
-                'x-rapidapi-host': "yh-finance.p.rapidapi.com",
-                'x-rapidapi-key': API_KEY
-                }
-
+            system_time = getSystemTime(system_time)
+            #print (system_time)
+            checkFolder(folder1Exists, folder2Exists, 'json', 'csv')
             
-            while i < 5:
+            # se l'orario di sistema è compreso tra le 15:30 e le 22:00 (apertura-chiusura borsa americana)
+            if system_time >= 153000 and system_time <= 220000:
                 
-                if i == 0:
-                    path = "json/TSLA.json"
-            
-                if i == 1:
-                    path = "json/AAPL.json"
-
-                if i == 2:
-                    path = "json/AMZN.json"
-
-                if i == 3:
-                    path = "json/SPY.json"
-
-                if i == 4:
-                    path = "json/META.json"
+                i = 0
+                titolo = ["TSLA", "AAPL", "AMZN", "SPY", "FB"]
+                name = ["TSLA", "AAPL", "AMZN", "SPY", "FB"]
                 
-                # utilizzo del API
-                querystring = {"region":"US","symbols":titolo[i]}
-                response = requests.request("GET", url, headers=headers, params=querystring)
-                status_code = response.status_code
-                if status_code == 200:
+                
+                url = "https://yh-finance.p.rapidapi.com/market/v2/get-quotes"
 
-                    correctJson = removeJson(response.text)
-                    writeToFile(path, correctJson)
+                
 
-                    with open(path, "r") as json_file:
-                        
-                        fileName = name[i]
-                        lockExtension = ".lock"
-                        csvExtension = ".csv"
-                        lockFile = fileName + lockExtension
-                        csvFileName = fileName + csvExtension
-                        csvFolderPath = "csv"
-                        csvPath = csvFolderPath + "/" + csvFileName
-                        writeLockFile = "write"+fileName+lockExtension
+                headers = {
+                    'x-rapidapi-host': "yh-finance.p.rapidapi.com",
+                    'x-rapidapi-key': API_KEY
+                    }
 
-                        # controllo dell'esistenza del file .lock
-                        file_exists = exists(writeLockFile)
-                        csvExists = checkFile(csvExists, csvPath)
-                        
-
-                        
-                        # se il file .lock non esiste
-                        if file_exists == False:
-                            
-                            print("Scrittura in corso....")
-                            # creazione del file di lock per la lettura
-                            with open(lockFile, "xt") as f:
-                                f.close()
-                            
-                            data = json.load(json_file)
-
-                            t.sleep(1)
-                            
-
-                            file = open (csvPath, 'a')
-                            print("\n")
-                            
-                            
-
-                            # calcolo e scrittura del timestamp
-                            timestamp = getTimeStamp()
-                            timestamp = str(timestamp)
-                            file.write(timestamp)
-                            file.write(";")
-                            
-                            print("---------------------------------------\n")
-                        
-                            # scrittura del prezzo di mercato
-                            actualValue = data[0]['regularMarketPrice']
-                            print("Valore attuale: ", actualValue)
-                            actualValue = str(actualValue)
-                            file.write(actualValue)
-                            file.write(";")
-
-                            # scrittura della percentuale
-                            perc = data[0]['regularMarketChangePercent']
-                            print("Percentuale dal apertura: ", perc, "%")
-                            perc = str(perc)
-                            file.write(perc)
-                            file.write(";")
-                                    
-                            # scrittura del valore di apertura
-                            openValue = data[0]['regularMarketOpen']
-                            print("Valore di apertura: ", openValue)
-                            openValue = str(openValue)
-                            file.write(openValue)
-                            file.write(";")
-                                    
-                            # scrittura della chiusura precedente
-                            previousClose = data[0]['regularMarketPreviousClose']
-                            print("Valore precedente di chiusura: ", previousClose)
-                            previousClose = str(previousClose)
-                            file.write(previousClose)
-                            file.write(";")
-
-                            # scrittura del range odierno
-                            todayRange = data[0]['regularMarketDayRange']
-                            print("Range odierno: ", todayRange, "\n")
-                            todayRange = str(todayRange)
-                            file.write(todayRange)
-                            file.write(";")
-                            file.write("\n")
-                            
-                            # chiusura del flusso
-                            file.close()
-
-                            print("---------------------------------------\n")
+                
+                while i < 5:
                     
-                            # rimozione del file di lock per la lettura
-                            os.remove(lockFile)
-                            i = i + 1
-                        else:
-                            print("File lock presente!")
-                            i = i + 1
+                    if i == 0:
+                        path = "json/TSLA.json"
+                
+                    if i == 1:
+                        path = "json/AAPL.json"
+
+                    if i == 2:
+                        path = "json/AMZN.json"
+
+                    if i == 3:
+                        path = "json/SPY.json"
+
+                    if i == 4:
+                        path = "json/META.json"
                     
-            t.sleep(600) 
+                    # utilizzo del API
+                    querystring = {"region":"US","symbols":titolo[i]}
+                    response = requests.request("GET", url, headers=headers, params=querystring)
+                    status_code = response.status_code
+                    if status_code == 200:
 
-        else:
-            print("La borsa e' chiusa!")
-            t.sleep(600)   
+                        correctJson = removeJson(response.text)
+                        writeToFile(path, correctJson)
 
+                        with open(path, "r") as json_file:
+                            
+                            fileName = name[i]
+                            lockExtension = ".lock"
+                            csvExtension = ".csv"
+                            lockFile = fileName + lockExtension
+                            csvFileName = fileName + csvExtension
+                            csvFolderPath = "csv"
+                            csvPath = csvFolderPath + "/" + csvFileName
+                            writeLockFile = "write"+fileName+lockExtension
+
+                            # controllo dell'esistenza del file .lock
+                            file_exists = exists(writeLockFile)
+                            csvExists = checkFile(csvExists, csvPath)
+                            
+
+                            
+                            # se il file .lock non esiste
+                            if file_exists == False:
+                                
+                                print("Scrittura in corso....")
+                                # creazione del file di lock per la lettura
+                                with open(lockFile, "xt") as f:
+                                    f.close()
+                                
+                                data = json.load(json_file)
+
+                                t.sleep(1)
+                                
+
+                                file = open (csvPath, 'a')
+                                print("\n")
+                                
+                                
+
+                                # calcolo e scrittura del timestamp
+                                timestamp = getTimeStamp()
+                                timestamp = str(timestamp)
+                                file.write(timestamp)
+                                file.write(";")
+                                
+                                print("---------------------------------------\n")
+                            
+                                # scrittura del prezzo di mercato
+                                actualValue = data[0]['regularMarketPrice']
+                                print("Valore attuale: ", actualValue)
+                                actualValue = str(actualValue)
+                                file.write(actualValue)
+                                file.write(";")
+
+                                # scrittura della percentuale
+                                perc = data[0]['regularMarketChangePercent']
+                                print("Percentuale dal apertura: ", perc, "%")
+                                perc = str(perc)
+                                file.write(perc)
+                                file.write(";")
+                                        
+                                # scrittura del valore di apertura
+                                openValue = data[0]['regularMarketOpen']
+                                print("Valore di apertura: ", openValue)
+                                openValue = str(openValue)
+                                file.write(openValue)
+                                file.write(";")
+                                        
+                                # scrittura della chiusura precedente
+                                previousClose = data[0]['regularMarketPreviousClose']
+                                print("Valore precedente di chiusura: ", previousClose)
+                                previousClose = str(previousClose)
+                                file.write(previousClose)
+                                file.write(";")
+
+                                # scrittura del range odierno
+                                todayRange = data[0]['regularMarketDayRange']
+                                print("Range odierno: ", todayRange, "\n")
+                                todayRange = str(todayRange)
+                                file.write(todayRange)
+                                file.write(";")
+                                file.write("\n")
+                                
+                                # chiusura del flusso
+                                file.close()
+
+                                print("---------------------------------------\n")
+                        
+                                # rimozione del file di lock per la lettura
+                                os.remove(lockFile)
+                                i = i + 1
+                            else:
+                                print("File lock presente!")
+                                i = i + 1
+                        
+                t.sleep(600) 
+
+            else:
+                print("La borsa e' chiusa!")
+                t.sleep(600)   
+    
+    else:
+        print("inserire la chiave API nel file key")
     
 
             
