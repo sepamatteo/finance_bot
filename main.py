@@ -97,10 +97,10 @@ def main():
     
     system_time = 0
 
-    key = ""
-    API_KEY = readKey(key)
+    temp_key = ""
+    API_KEY = readKey(temp_key)
     
-    if os.stat("key").st_size != 0:
+    if os.stat('key').st_size != 0:
         
         csvExists = False
         folder1Exists = False
